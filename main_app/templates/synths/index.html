@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>ALL UR SYNTHS (ARE ALSO MEIN SYNTHS)</h1>
+
+    {% for synth in synths %}
+        <div class="card">
+            <a href="/synths/{{synth.id}}">
+            <div class="card-container">
+                <h5>Brand: {{synth.brand}}</h5>
+                <h5>Model: {{synth.model}}</h5>
+                <h5>Type: {{synth.s_type}}</h5>
+                <h5>rating: {{synth.rating}}</h5>
+            </div>
+            </a>    
+        </div>
+    {%endfor%}
+{% endblock %}
