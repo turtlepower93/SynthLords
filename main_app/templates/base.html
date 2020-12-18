@@ -21,8 +21,9 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;SynthCollector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/synths">See them Synths</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'synth_create'%}">+SYNTH+</a></li>
+          <li><a href="{% url 'index'%}"><%=SYNTH%></a></li>
         </ul>
       </div>
     </nav>

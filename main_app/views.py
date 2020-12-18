@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Synth
 
+from django.views.generic.edit import CreateView,DeleteView,UpdateView
 # Create your views here.
 from django.http import HttpResponse
 
@@ -18,3 +19,8 @@ def synths_index(request):
 def synth_details(request, synth_id):
     synth = Synth.objects.get(id = synth_id)
     return render(request, 'synths/details.html', {'synth':synth})
+
+class SynthCreate(CreateView):
+    model = Synth
+    fields = "__all__"
+    success_url = '/synths/'
