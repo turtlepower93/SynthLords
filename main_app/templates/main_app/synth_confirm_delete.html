@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h1>IF DELETE, I EAT</h1>
 
+<h4>if sure, I CONSUME <span class="red-text">{{object.name}}</span></h4>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE = YES?" class="btn">
+    <a href="{% url 'details' synth.id %}"> YOU KEEP UNTIL I EAT</a>
+</form>
 
 {% endblock %}
+

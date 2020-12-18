@@ -24,3 +24,11 @@ class SynthCreate(CreateView):
     model = Synth
     fields = "__all__"
     success_url = '/synths/'
+
+class SynthDelete(DeleteView):
+    model = Synth
+    success_url = '/synths/'
+
+class SynthUpdate(UpdateView):
+    model = Synth
+    fields = '__all__'

@@ -10,6 +10,10 @@
         <h5>Type: {{synth.s_type}}</h5>
         <h5>rating: {{synth.rating}}</h5>
     </div>
+    <div class="card-action">
+        <a href="{% url 'synth_update' synth.id%}">UPDATEUPGRADEUPDATE</a>
+        <a href="{% url 'synth_delete' synth.id%}">I WILL CONSUME DELETEDELETE</a>
+    </div>
 </div>
 
 {% endblock %}
