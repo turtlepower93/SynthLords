@@ -11,9 +11,27 @@
         <h5>rating: {{synth.rating}}</h5>
     </div>
     <div class="card-action">
-        <a href="{% url 'synth_update' synth.id%}">UPDATEUPGRADEUPDATE</a>
-        <a href="{% url 'synth_delete' synth.id%}">I WILL CONSUME DELETEDELETE</a>
+        <a href="{% url 'synth_update' synth.id %}">UPDATEUPGRADEUPDATE</a>
+        <a href="{% url 'synth_delete' synth.id %}">I WILL CONSUME DELETEDELETE</a>
     </div>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>PATCH NAME</th>
+                <th>TYPE</th>
+                <th>AUTHOR</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patch in synth.patch_set.all %}
+                <tr>
+                    <td>{{ patch.name }}</td>
+                    <td>{{ patch.get_category_display }}</td>
+                    <td>{{ patch.author }}</td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
