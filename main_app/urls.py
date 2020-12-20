@@ -9,4 +9,5 @@ urlpatterns = [
     path('synths/create/', views.SynthCreate.as_view(), name='synths_create'),
     path('synths/<int:pk>/delete/', views.SynthDelete.as_view(), name='synth_delete'),
     path('synths/<int:pk>/update/', views.SynthUpdate.as_view(), name='synth_update'),
+    path('synths/<int:synth_id>/add_patch', views.add_patch, name='add_patch'),
 ]

@@ -7,6 +7,7 @@ CATEGORIES = (
     ('B', 'Bass'),
     ('L', 'Lead'),
     ('P', 'Pad'),
+    {'K', 'DrumKit'}
 )
 
 class Synth(models.Model):

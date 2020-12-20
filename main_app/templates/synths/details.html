@@ -14,6 +14,15 @@
         <a href="{% url 'synth_update' synth.id %}">UPDATEUPGRADEUPDATE</a>
         <a href="{% url 'synth_delete' synth.id %}">I WILL CONSUME DELETEDELETE</a>
     </div>
+</div>
+<div class="card">
+    <div class="card-container">
+        <form action="{% url 'add_patch' synth.id %}" method="post">
+            {% csrf_token %}
+            {{ patches_form.as_p }}
+            <input type="submit" class="btn" value="addPAATCH">
+        </form>
+    </div>
     <table class="striped">
         <thead>
             <tr>
@@ -33,5 +42,9 @@
         </tbody>
     </table>
 </div>
+<script>
+    const constPatchTypeEl = document.getElementById('id_category');
+    M.FormSelect.init(constPatchTypeEl);
+</script>
 
 {% endblock %}

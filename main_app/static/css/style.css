@@ -4,7 +4,7 @@
       display: flex;
       min-height: 100vh;
       flex-direction: column;
-      font-family: 'Press Start 2P', cursive;
+      font-family: 'Press Start 2P';
       background-color: rgb(74, 232, 79);
     }
     
@@ -17,7 +17,22 @@
     text-align: right;
   }
 
-  .synth-logo {
-    margin-left: 20px;
+  .brand-logo {
     width:150px;
   }
+
+  .btn {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  .select-dropdown {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  form > p > label {
+    color: blue
+  }
+  
+  li > .brand-logo {
+  color: white;
+}
