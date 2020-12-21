@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Synth
+from .models import Synth, Artist
 from .forms import PatchesForm
-
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
-# Create your views here.
+from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 
 
@@ -14,16 +13,25 @@ def about(request):
     return render(request, 'about.html')
 
 def synths_index(request):
-
     synths = Synth.objects.all()
     return render(request, 'synths/index.html', {'synths': synths})
 
 def synth_details(request, synth_id):
     synth = Synth.objects.get(id = synth_id)
     patches_form = PatchesForm()
+    artists_that_dont_have_synth = Artist.objects.exclude(id__in = synth.artists.all().values_list('id'))
     return render(request, 'synths/details.html', {
         'synth':synth,
-        'patches_form' : patches_form})
+        'patches_form' : patches_form,
+        'artists': artists_that_dont_have_synth})
+
+def artists_index(request):
+    artist = Artist.objects.all()
+    return render(request, 'artist/index.html')
+
+def assoc_artist(request, synth_id, artist_id):
+    synth = Synth.objects.get(id=synth_id).artists.add(artist_id)
+    return redirect('details', synth_id=synth_id)
 
 class SynthCreate(CreateView):
     model = Synth
@@ -37,6 +45,24 @@ class SynthDelete(DeleteView):
 class SynthUpdate(UpdateView):
     model = Synth
     fields = '__all__'
+
+class ArtistList(ListView):
+    model = Artist
+
+class ArtistDetail(DetailView):
+    model = Artist
+
+class ArtistCreate(CreateView):
+    model = Artist
+    fields ="__all__"
+
+class ArtistUpdate(UpdateView):
+    model = Artist
+    fields = ['name','genre']
+
+class ArtistDelete(DeleteView):
+    model = Artist
+    success_url = '/artists/'
 
 def add_patch(request, synth_id):
     print('Hi')

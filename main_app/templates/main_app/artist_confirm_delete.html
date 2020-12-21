@@ -8,7 +8,7 @@
 <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="DELETE = YES?" class="btn">
-    <a href="{% url 'artists_index' artist.id %}"> YOU KEEP UNTIL I EAT</a>
+    <a href="{% url 'artists_index' %}"> YOU KEEP UNTIL I EAT</a>
 </form>
 
 {% endblock %}

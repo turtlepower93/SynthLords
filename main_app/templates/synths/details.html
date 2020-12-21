@@ -8,11 +8,11 @@
         <h5>Brand: {{synth.brand}}</h5>
         <h5>Model: {{synth.model}}</h5>
         <h5>Type: {{synth.s_type}}</h5>
-        <h5>rating: {{synth.rating}}</h5>
+        <h5>rating: {{synth.rating}} </h5>
     </div>
     <div class="card-action">
-        <a href="{% url 'synth_update' synth.id %}">UPDATEUPGRADEUPDATE</a>
-        <a href="{% url 'synth_delete' synth.id %}">I WILL CONSUME DELETEDELETE</a>
+        <a href="{% url 'synth_update' synth.id %}">UPDATE/UPGRADE**UPDATE</a><br>
+        <a href="{% url 'synth_delete' synth.id %}"> DELETE-CONSUME/DELETE</a>
     </div>
 </div>
 <div class="card">
@@ -42,6 +42,50 @@
         </tbody>
     </table>
 </div>
+
+</div>
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h5>{{ synth.brand }}'s Artists</h3>
+    {% if synth.artists.count %}
+      {% for artist in synth.artists.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              </span> {{ artist.name }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No Arists! :(</h5>
+    {% endif %}
+  </div>
+    <div class="col s6">
+  <h5>/Artists/*</h3>
+  {% if artists.count %}
+    {% for artist in artists.all %}
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">
+            {{ artist.name }}<br>{{artist.genre}}
+          </span>
+        </div>
+        <div class="card-action">
+          <form action="{% url 'assoc_artist' synth.id artist.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Add</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h5>DAS <span class="red-text">{{synth.model}}</span> Is the ULTIMATE BEAST</h5>
+  {% endif %}
+
+</div>
+
 <script>
     const constPatchTypeEl = document.getElementById('id_category');
     M.FormSelect.init(constPatchTypeEl);

@@ -7,14 +7,22 @@ CATEGORIES = (
     ('B', 'Bass'),
     ('L', 'Lead'),
     ('P', 'Pad'),
-    {'K', 'DrumKit'}
+    ('K', 'DrumKit')
 )
+
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+    genre = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        return reverse('artist_detail', kwargs={'pk': self.id})
 
 class Synth(models.Model):
     brand = models.CharField(max_length=40)
     model = models.CharField(max_length=40)
     s_type = models.CharField(max_length=40)
     rating = models.IntegerField()
+    artists = models.ManyToManyField(Artist)
 
     def __str__(self):
         return self.model
