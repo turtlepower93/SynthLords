@@ -39,7 +39,7 @@ def disassoc_artist(request,synth_id,artist_id):
 
 class SynthCreate(CreateView):
     model = Synth
-    fields = "__all__"
+    fields = ['brand','model','s_type','rating']
     success_url = '/synths/'
 
 class SynthDelete(DeleteView):
