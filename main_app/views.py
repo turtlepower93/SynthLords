@@ -33,6 +33,10 @@ def assoc_artist(request, synth_id, artist_id):
     synth = Synth.objects.get(id=synth_id).artists.add(artist_id)
     return redirect('details', synth_id=synth_id)
 
+def disassoc_artist(request,synth_id,artist_id):
+    synth = Synth.objects.get(id=synth_id).artists.remove(artist_id)
+    return redirect('details', synth_id=synth_id)
+
 class SynthCreate(CreateView):
     model = Synth
     fields = "__all__"

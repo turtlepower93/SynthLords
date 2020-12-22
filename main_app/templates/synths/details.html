@@ -11,7 +11,8 @@
         <h5>rating: {{synth.rating}} </h5>
     </div>
     <div class="card-action">
-        <a href="{% url 'synth_update' synth.id %}">UPDATE/UPGRADE**UPDATE</a><br>
+        <a href="{% url 'synth_update' synth.id %}"><span color="red-text">UPDATE/UPGRADE**UPDATE</span></a><br>
+        <br>
         <a href="{% url 'synth_delete' synth.id %}"> DELETE-CONSUME/DELETE</a>
     </div>
 </div>
@@ -53,8 +54,14 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              </span> {{ artist.name }}
+              </span> {{ artist.name }}<br>{{artist.genre}}
             </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'disassoc_artist' synth.id artist.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">PU--RGE</button>
+            </form>
           </div>
         </div>
       {% endfor %}
@@ -75,7 +82,7 @@
         <div class="card-action">
           <form action="{% url 'assoc_artist' synth.id artist.id %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn">C0NSuuME</button>
           </form>
         </div>
       </div>

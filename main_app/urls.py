@@ -12,6 +12,7 @@ urlpatterns = [
     path('synths/<int:synth_id>/add_patch', views.add_patch, name='add_patch'),
     path('artists/', views.ArtistList.as_view(), name="artists_index"),
     path('artists/<int:synth_id>/assoc_artist/<int:artist_id>/', views.assoc_artist, name="assoc_artist"),
+    path('artists/<int:synth_id>/disassoc_artist/<int:artist_id>/', views.disassoc_artist, name="disassoc_artist"),
     path('artists/<int:pk>/', views.ArtistDetail.as_view(), name='artist_detail'),
     path('artists/create/', views.ArtistCreate.as_view(), name='artists_create'),
     path('artists/<int:pk>/update/', views.ArtistUpdate.as_view(), name='artists_update'),
